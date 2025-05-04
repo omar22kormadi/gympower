@@ -7,8 +7,8 @@
       <p class="article-description">{{ article.description }}</p>
       <div class="article-footer">
         <span class="article-price">${{ article.price.toFixed(2) }}</span>
-        <button class="edit-btn">Edit</button>
-        <button class="edit-btn">Delete</button>
+        <button class="edit-btn" (click)="onEdit()" >Edit</button>
+        <button class="edit-btn" (click)="onDelete()" >Delete</button>
       </div>
     </div>
   </div>

@@ -1,1 +1,29 @@
-<p>add-article works!</p>
+<h2 mat-dialog-title>Add New Article</h2>
+    <mat-dialog-content>
+      <form #articleForm="ngForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="article.nomArt" name="nomArt" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput [(ngModel)]="article.description" name="description" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput type="number" [(ngModel)]="article.price" name="price" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Image URL</mat-label>
+          <input matInput [(ngModel)]="article.image" name="image" required>
+        </mat-form-field>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button color="primary" (click)="onSubmit()" [disabled]="!articleForm.form.valid">Add</button>
+    </mat-dialog-actions>
+  

@@ -1,1 +1,8 @@
-<p>delete-article works!</p>
+<h2 mat-dialog-title>Confirm Delete</h2>
+    <mat-dialog-content>
+      Are you sure you want to delete "{{ data.nomArt }}"?
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button color="warn" (click)="onConfirm()">Delete</button>
+    </mat-dialog-actions>
