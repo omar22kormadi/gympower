@@ -1,1 +1,14 @@
-<p>article-item works!</p>
+<div class="article-card">
+    <div class="article-image-container">
+      <img [src]="article.image" [alt]="article.nomArt" class="article-image">
+    </div>
+    <div class="article-content">
+      <h3 class="article-title">{{ article.nomArt }}</h3>
+      <p class="article-description">{{ article.description }}</p>
+      <div class="article-footer">
+        <span class="article-price">${{ article.price.toFixed(2) }}</span>
+        <button class="edit-btn">Edit</button>
+        <button class="edit-btn">Delete</button>
+      </div>
+    </div>
+  </div>
