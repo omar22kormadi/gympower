@@ -1,1 +1,19 @@
-<p>header works!</p>
+<header class="header">
+    <div class="container">
+      <div class="logo-container">
+        <h1 class="logo">{{ title }}</h1>
+      </div>
+      <nav class="navigation">
+        <ul>
+          <li *ngFor="let item of navItems">
+            <a [href]="item.link">{{ item.name }}</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="add-container">
+        <button class="add-button">
+          <span class="material-symbols-outlined">add</span>
+        </button>
+      </div>
+    </div>
+  </header>

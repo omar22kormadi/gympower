@@ -1,0 +1,94 @@
+.header {
+    background-color: #1A2B4C;
+    color: white;
+    padding: 16px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .logo:hover {
+    color: #E63946;
+  }
+  
+  .navigation ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navigation li {
+    margin: 0 16px;
+  }
+  
+  .navigation a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .navigation a:hover {
+    color: #E63946;
+  }
+  
+  .navigation a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #E63946;
+    transition: width 0.4s ease;
+  }
+  
+  .navigation a:hover:after {
+    width: 100%;
+  }
+  
+  .add-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+    transition: color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    color: #E63946;
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+    .navigation {
+      display: none;
+    }
+  }
