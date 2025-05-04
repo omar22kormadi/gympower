@@ -1,1 +1,29 @@
-<p>article-list works!</p>
+<section class="article-list">
+    <div class="container">
+      <h2 class="section-title">Premium Gym Equipment</h2>
+      <p class="section-subtitle">Explore our collection of high-quality gym equipment to elevate your workout routine</p>
+      
+      <div class="articles-grid">
+        <app-article-item 
+          *ngFor="let article of articles" 
+          [article]="article">
+        </app-article-item>
+      </div>
+  
+      <div class="pagination">
+        <button 
+          class="pagination-btn" 
+          [disabled]="currentPage === 1"
+          (click)="previousPage()">
+          Previous
+        </button>
+        <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+        <button 
+          class="pagination-btn" 
+          [disabled]="currentPage === totalPages"
+          (click)="nextPage()">
+          Next
+        </button>
+      </div>
+    </div>
+  </section>
