@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:GymPower": "node dist/gym-power/server/server.mjs"
+    "dev": "ng serve",
+    "server": "node ./backend/server.js",
+    "dev:server": "nodemon ./backend/server.js"
   },
   "private": true,
   "dependencies": {

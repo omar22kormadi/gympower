@@ -1,31 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../model/article.model';
-import { RouterModule } from '@angular/router';
-import { ArticleItemComponent } from '../article-item/article-item.component';
 import { CommonModule } from '@angular/common';
+import { ArticleItemComponent } from '../article-item/article-item.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ArticleService } from '../services/articles.service';
+import { Article } from '../model/article.model';
 
 @Component({
   selector: 'app-article-list',
   standalone: true,
-  imports: [RouterModule, ArticleItemComponent, CommonModule],
+  imports: [CommonModule, ArticleItemComponent, MatProgressSpinnerModule],
   templateUrl: './article-list.component.html',
-  styleUrl: './article-list.component.css'
+  styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
   currentPage: number = 1;
   totalPages: number = 1;
+  loading: boolean = true;
+  error: string | null = null;
+  itemsPerPage: number = 6;
   
   constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
     this.loadArticles();
-    this.totalPages = this.articleService.getTotalPages();
+   
   }
 
   loadArticles(): void {
-    this.articles = this.articleService.getArticles(this.currentPage);
+    this.loading = true;
+    this.error = null;
+    this.articleService.getArticles(this.currentPage, this.itemsPerPage).subscribe({
+      next: (response) => {
+        this.articles = response.articles;
+        this.currentPage = response.currentPage;
+        this.totalPages = response.totalPages;
+        this.loading = false;
+      },
+      error: (error) => {
+        this.error = 'Failed to load articles. Please try again later.';
+        this.loading = false;
+        console.error('Error loading articles:', error);
+      }
+    });
   }
 
   nextPage(): void {

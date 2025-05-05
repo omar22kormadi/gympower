@@ -1,29 +1,38 @@
 <section class="article-list">
-    <div class="container">
-      <h2 class="section-title">Premium Gym Equipment</h2>
-      <p class="section-subtitle">Explore our collection of high-quality gym equipment to elevate your workout routine</p>
-      
-      <div class="articles-grid">
-        <app-article-item 
-          *ngFor="let article of articles" 
-          [article]="article">
-        </app-article-item>
-      </div>
-  
-      <div class="pagination">
-        <button 
-          class="pagination-btn" 
-          [disabled]="currentPage === 1"
-          (click)="previousPage()">
-          Previous
-        </button>
-        <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
-        <button 
-          class="pagination-btn" 
-          [disabled]="currentPage === totalPages"
-          (click)="nextPage()">
-          Next
-        </button>
-      </div>
+  <div class="container">
+    <h2 class="section-title">Premium Gym Equipment</h2>
+    <p class="section-subtitle">Explore our collection of high-quality gym equipment to elevate your workout routine</p>
+    
+    <div *ngIf="loading" class="loading-spinner">
+      <mat-spinner></mat-spinner>
     </div>
-  </section>
+
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+
+    <div *ngIf="!loading && !error" class="articles-grid">
+      <app-article-item 
+        *ngFor="let article of articles" 
+        [article]="article"
+        (articleDeleted)="loadArticles()">
+      </app-article-item>
+    </div>
+
+    <div class="pagination" *ngIf="!loading && !error">
+      <button 
+        class="pagination-btn" 
+        [disabled]="currentPage === 1"
+        (click)="previousPage()">
+        Previous
+      </button>
+      <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button 
+        class="pagination-btn" 
+        [disabled]="currentPage === totalPages"
+        (click)="nextPage()">
+        Next
+      </button>
+    </div>
+  </div>
+</section>
